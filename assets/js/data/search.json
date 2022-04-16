@@ -12,7 +12,7 @@
 
 
 
-    "snippet": "object_detection と Image depth estimation を使用してオブジェクトの深度を計測注意python初心者なのでコードにツッコミどころがるとおみますが、お気になさらず。本題です。作った経緯としては、オブジェクト(画像の中に映ってる人)の距離を計測できるかなって感じです。今回、使用したモデルはオブジェクト検知のobject_detectionとmidas/v2です  object_detectionのモデルは基本どれを使用しても問題ないはずです。まず、midas/v2とobject_detectionを使ってこの画像を以下のようにします。それぞれのモデルを使用して出された画像object_detectionからdetection_boxesを使ってmidas/v2から出た画像を合わせる。detection_boxesの部分を切り出して、numpy array内を平均で出すと以下になります。{&#39;id&#39;: 17, &#39;name&#39;: &#39;cat&#39;, &#39;detection_scores&#39;: 0.9192501306533813, &#39;mean&#39;: 0.6890426442537253}だいたい0.69ぐらいです。この数値が1になるほど近くなり0になるほど遠くなります。問題点  画像によってmidas/v2の精度が良くない。  object_detectionからdetection_boxesを使ってmidas/v2から出た画像が以下のように黒い部分の割合が多い場合、平均化する時に良くない影響を出す。上部の部分が黒い。"
+    "snippet": "object_detection と Image depth estimation を使用してオブジェクトの深度を計測注意python初心者なのでコードにツッコミどころがるとおみますが、お気になさらず。本題です。作った経緯としては、オブジェクト(画像の中に映ってる人)の距離を計測できるかなって感じです。今回、使用したモデルはオブジェクト検知のobject_detectionとmidas/v2です  object_detectionのモデルは基本どれを使用しても問題ないはずです。まず、midas/v2とobject_detectionを使ってこの画像を以下のようにします。それぞれのモデルを使用して出された画像object_detectionのdetection_boxesを使ってmidas/v2から出た画像を合わせる。detection_boxesの部分を切り出して、numpy array内を平均で出すと以下になります。{&#39;id&#39;: 17, &#39;name&#39;: &#39;cat&#39;, &#39;detection_scores&#39;: 0.9192501306533813, &#39;mean&#39;: 0.6890426442537253}だいたい0.69ぐらいです。この数値が1になるほど近くなり0になるほど遠くなります。問題点  画像によってmidas/v2の精度が良くない。  object_detectionからdetection_boxesを使ってmidas/v2から出た画像が以下のように黒い部分の割合が多い場合、平均化する時に良くない影響を出す。上部の部分が黒い。"
   },
   
   {
