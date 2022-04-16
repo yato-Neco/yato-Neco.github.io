@@ -968,6 +968,18 @@
       
 
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
 
     
 
@@ -1070,7 +1082,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="390 words">
+  title="379 words">
   <em>2 min</em> read</span>
 
 
@@ -1109,7 +1121,7 @@ python初心者なのでコードにツッコミどころがるとおみます�
 
 <div style="text-align: center">
 
-&gt;<img width="50%" data-src="http://drive.google.com/uc?export=view&amp;id=1UKyQqhwJdVebLfC0cLvWFS16NM23iGDy" data-proofer-ignore>
+<img width="50%" data-src="http://drive.google.com/uc?export=view&amp;id=1UKyQqhwJdVebLfC0cLvWFS16NM23iGDy" data-proofer-ignore>
 </div>
 
 <hr />
@@ -1118,51 +1130,49 @@ python初心者なのでコードにツッコミどころがるとおみます�
 
 <span style="font-size: 80%">
 
-&gt;それぞれのモデルを使用して出された画像</span><br />
-&gt;<img style="padding: 0 1%;" width="35%" data-src="http://drive.google.com/uc?export=view&amp;id=1HxpLdln1OkPmG-rW3IBF0X9xBZWoU_Jf" data-proofer-ignore>
-&gt;<img style="padding: 0 1%;" width="35%" data-src="http://drive.google.com/uc?export=view&amp;id=1NsPmxsDJT4qlrtcGy6OKtFORr3_velzv" data-proofer-ignore><br />
+それぞれのモデルを使用して出された画像</span><br />
+<img style="padding: 0 1%;" width="35%" data-src="http://drive.google.com/uc?export=view&amp;id=1HxpLdln1OkPmG-rW3IBF0X9xBZWoU_Jf" data-proofer-ignore>
+<img style="padding: 0 1%;" width="35%" data-src="http://drive.google.com/uc?export=view&amp;id=1NsPmxsDJT4qlrtcGy6OKtFORr3_velzv" data-proofer-ignore><br />
 
 </div>
 
 <hr />
 
-<div>
-
 <div style="text-align: center">
 
-&gt;object_detectionからdetection_boxesを使ってmidas/v2から出た画像を合わせる。
-&gt;<img style="padding: 0 1%;" width="50%" data-src="http://drive.google.com/uc?export=view&amp;id=1HoZHRBjcFl_Xl46MwKf93KZZ0rcb7VPY" data-proofer-ignore>
+object_detectionからdetection_boxesを使ってmidas/v2から出た画像を合わせる。
+<img style="padding: 0 1%;" width="50%" data-src="http://drive.google.com/uc?export=view&amp;id=1HoZHRBjcFl_Xl46MwKf93KZZ0rcb7VPY" data-proofer-ignore>
 </div>
 
----
-
-
+<hr />
 
 <div style="display:flex">
 <img style="padding: 0 1%;" width="25%" data-src="http://drive.google.com/uc?export=view&amp;id=1N9jhJbx6SxBJaa429XTcIpfrVnSqMWGr" data-proofer-ignore>
 
 <div>
 
-detection_boxesの部分を切り出して、numpy array内を平均で出すと以下になります。
+<p>detection_boxesの部分を切り出して、numpy array内を平均で出すと以下になります。</p>
 
-```
-{'id': 17, 'name': 'cat', 'detection_scores': 0.9192501306533813, 'mean': 0.6890426442537253}      
-```
+<code>
+{'id': 17, 'name': 'cat', 'detection_scores': 0.9192501306533813, 'mean': 0.6890426442537253}
+</code>
 
+<p>
 だいたい0.69ぐらいです。<br />
 この数値が1になるほど近くなり0になるほど遠くなります。
+</p>
 </div>
 </div>
-<br />
+<p><br /></p>
 
+<h2 id="問題点"><span class="mr-2">問題点</span><a href="#問題点" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2></h2>
 
+<ul>
+  <li>画像によってmidas/v2の精度が良くない。</li>
+  <li>object_detectionからdetection_boxesを使ってmidas/v2から出た画像が以下のように黒い部分の割合が多い場合、平均化する時に良くない影響を出す。</li>
+</ul>
 
-
-## 問題点
-
-- 画像によってmidas/v2の精度が良くない。
-- object_detectionからdetection_boxesを使ってmidas/v2から出た画像が以下のように黒い部分の割合が多い場合、平均化する時に良くない影響を出す。
-
+<div style="display:flex">
 <img style="padding: 0 1%;" width="25%" data-src="http://drive.google.com/uc?export=view&amp;id=1A5e0zvAPV3PesjqdLBGfLmmrMDPTV-SB" data-proofer-ignore>
 <img style="padding: 0 1%;" width="25%" data-src="http://drive.google.com/uc?export=view&amp;id=1NE0FRElyIRusVuTp4iQhb4Pspv6cUZD1" data-proofer-ignore>
 上部の部分が黒い。
