@@ -4,7 +4,7 @@
   <id>/</id>
   <title>yato-neco</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-04-17T01:26:04+09:00</updated>
+  <updated>2022-04-17T01:31:02+09:00</updated>
   <author>
     <name>yato-neco</name>
     <uri>/</uri>
@@ -50,7 +50,7 @@
 
 
 注意
-python初心者なのでコードにツッコミどころがるとおみますが、&amp;lt;/br&amp;gt;
+python初心者なのでコードにツッコミどころがるとおみますが、
 お気になさらず。
 
 
@@ -91,7 +91,7 @@ midas/v2です
 
 
 
-object_detectionからdetection_boxesを...
+object_detectionからdetection_boxesを使ってmidas/v2...
     </summary>
   
 
