@@ -4,7 +4,7 @@
   <id>/</id>
   <title>yato-neco</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-04-16T13:35:32+09:00</updated>
+  <updated>2022-04-17T00:53:52+09:00</updated>
   <author>
     <name>yato-neco</name>
     <uri>/</uri>
@@ -17,6 +17,87 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>tensorflow hubにあるモデルでオブジェクトの深度(距離?)を計測</title>
+    <link href="/posts/obdepth-ai/" rel="alternate" type="text/html" title="tensorflow hubにあるモデルでオブジェクトの深度(距離?)を計測" />
+    <published>2022-04-16T19:37:00+09:00</published>
+  
+    <updated>2022-04-16T19:37:00+09:00</updated>
+  
+    <id>/posts/obdepth-ai/</id>
+    <content src="/posts/obdepth-ai/" />
+    <author>
+      <name>yato-neco</name>
+    </author>
+
+  
+    
+    <category term="プログラミング" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      object_detection と Image depth estimation を使用してオブジェクトの深度を計測
+
+
+注意
+python初心者なのでコードにツッコミどころがるとおみますが、&amp;lt;/br&amp;gt;
+お気になさらず。
+
+
+
+本題です。
+作った経緯としては、オブジェクト(画像の中に映ってる人)の距離を計測できるかなって感じです。
+
+今回、使用したモデルはオブジェクト検知の
+object_detection
+と
+midas/v2です
+
+  object_detectionのモデルは基本どれを使用しても問題ないはずです。
+
+
+まず、midas/v2とobject_detectionを使ってこの画像を以下のようにします。
+
+
+
+
+
+&amp;gt;
+
+
+
+
+
+
+
+
+&amp;gt;それぞれのモデルを使用して出された画像
+&amp;gt;
+&amp;gt;
+
+
+
+
+
+
+
+
+
+&amp;gt;object_detec...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
@@ -45,94 +126,6 @@
 
 
       
-
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>Rustos1</title>
-    <link href="/posts/rustOS1/" rel="alternate" type="text/html" title="Rustos1" />
-    <published>2021-10-12T00:00:00+09:00</published>
-  
-    <updated>2021-10-12T00:00:00+09:00</updated>
-  
-    <id>/posts/rustOS1/</id>
-    <content src="/posts/rustOS1/" />
-    <author>
-      <name>yato-neco</name>
-    </author>
-
-  
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      
-
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>Rust で自作 OS を作ろう 0 章</title>
-    <link href="/posts/rustOS0/" rel="alternate" type="text/html" title="Rust で自作 OS を作ろう 0 章" />
-    <published>2021-10-11T00:00:00+09:00</published>
-  
-    <updated>2021-10-11T00:00:00+09:00</updated>
-  
-    <id>/posts/rustOS0/</id>
-    <content src="/posts/rustOS0/" />
-    <author>
-      <name>yato-neco</name>
-    </author>
-
-  
-    
-    <category term="プログラミング" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      Rust で自作 OS を作ろう 0 章
-
-参考サイト
-
-
-  Writing an OS in Rust
-  The Rust Programming Language 日本語版
-
-
-環境
-
-
-  Windows11
-  Rust 1.55.0
-
-
-目標
-
-組み込み OS の作成
-
-Rust の勉強
 
     </summary>
   
@@ -239,6 +232,77 @@ sudo apt-get install python3-tk
 
 よくわからん…
 
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>ideapad duetのターミナルが起動できなくなった</title>
+    <link href="/posts/tarminal/" rel="alternate" type="text/html" title="ideapad duetのターミナルが起動できなくなった" />
+    <published>2021-03-28T00:00:00+09:00</published>
+  
+    <updated>2021-03-28T00:00:00+09:00</updated>
+  
+    <id>/posts/tarminal/</id>
+    <content src="/posts/tarminal/" />
+    <author>
+      <name>yato-neco</name>
+    </author>
+
+  
+    
+    <category term="プログラミング" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      ターミナルがエラーを起こし起動しなくなった
+
+動作環境
+
+  OS: Chromebook
+  CPU(SoC): MediaTek Helio P60T
+  Memoy: 4gb
+
+
+状況
+
+
+  Linux開発環境のリセットを試みたが、一向に削除が進まない。
+
+
+原因
+パッケージをインストールしまくて起動しなくなってしまった。
+(多分)
+
+対処
+
+
+  
+    croshをchromeの検索バーに打つ
+  
+  
+    vmc listで起動してるコンテナを確認
+  
+  vmc stop terminaでコンテナを停止
+    
+      私の場合はこの時点で直りました。
+直らない場合は以下のことを続けてしてください。
+    
+  
+  vmc destroy terminaコンテナ削除
+    
+      注意: Linux ファイルのデータ全部消えます。
+    ...
     </summary>
   
 

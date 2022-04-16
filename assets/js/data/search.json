@@ -1,6 +1,21 @@
 [
   
   {
+    "title": "tensorflow hubにあるモデルでオブジェクトの深度(距離?)を計測",
+    "url": "/posts/obdepth-ai/",
+    "categories": "プログラミング",
+    "tags": "AI, Python",
+    "date": "2022-04-16 19:37:00 +0900",
+    
+
+
+
+
+
+    "snippet": "object_detection と Image depth estimation を使用してオブジェクトの深度を計測注意python初心者なのでコードにツッコミどころがるとおみますが、&amp;lt;/br&amp;gt;お気になさらず。本題です。作った経緯としては、オブジェクト(画像の中に映ってる人)の距離を計測できるかなって感じです。今回、使用したモデルはオブジェクト検知のobject_detectionとmidas/v2です  object_detectionのモデルは基本どれを使用しても問題ないはずです。まず、midas/v2とobject_detectionを使ってこの画像を以下のようにします。&amp;gt;&amp;gt;それぞれのモデルを使用して出された画像&amp;gt;&amp;gt;&amp;gt;object_detectionからdetection_boxesを使ってmidas/v2から出た画像を合わせる。&amp;gt;---detection_boxesの部分を切り出して、numpy array内を平均で出すと以下になります。```{&#39;id&#39;: 17, &#39;name&#39;: &#39;cat&#39;, &#39;detection_scores&#39;: 0.9192501306533813, &#39;mean&#39;: 0.6890426442537253}      ```だいたい0.69ぐらいです。この数値が1になるほど近くなり0になるほど遠くなります。## 問題点- 画像によってmidas/v2の精度が良くない。- object_detectionからdetection_boxesを使ってmidas/v2から出た画像が以下のように黒い部分の割合が多い場合、平均化する時に良くない影響を出す。上部の部分が黒い。"
+  },
+  
+  {
     "title": "My New Post",
     "url": "/posts/my-new-post/",
     "categories": "",
@@ -13,36 +28,6 @@
 
 
     "snippet": ""
-  },
-  
-  {
-    "title": "Rustos1",
-    "url": "/posts/rustOS1/",
-    "categories": "",
-    "tags": "",
-    "date": "2021-10-12 00:00:00 +0900",
-    
-
-
-
-
-
-    "snippet": ""
-  },
-  
-  {
-    "title": "Rust で自作 OS を作ろう 0 章",
-    "url": "/posts/rustOS0/",
-    "categories": "プログラミング",
-    "tags": "Rust, OS",
-    "date": "2021-10-11 00:00:00 +0900",
-    
-
-
-
-
-
-    "snippet": "Rust で自作 OS を作ろう 0 章参考サイト  Writing an OS in Rust  The Rust Programming Language 日本語版環境  Windows11  Rust 1.55.0目標組み込み OS の作成Rust の勉強"
   },
   
   {
@@ -73,36 +58,6 @@
 
 
     "snippet": "Err発生以下の様なエラー文がでました。main.py:27: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure. plt.show()よく分からないけど、GUI環境がないのかな？解決方法色々調べたらこうしろって書いてあったmatplotlib.use(&#39;TkAgg&#39;)  を追加sudo apt-get install python3-tk  で起動した。よくわからん…"
-  },
-  
-  {
-    "title": "jsonは素晴らしい",
-    "url": "/posts/json/",
-    "categories": "プログラミング",
-    "tags": "python, json",
-    "date": "2021-04-06 00:00:00 +0900",
-    
-
-
-
-
-
-    "snippet": "jsonは素晴らしい初めて触って見たけど、データーを格納するには素晴らしいファイルただ、まだあまり知らないせいか、融通を利かすことができず、まだ扱いづらい"
-  },
-  
-  {
-    "title": "関数がわからないー",
-    "url": "/posts/discordbot2/",
-    "categories": "プログラミング",
-    "tags": "python, discord.py",
-    "date": "2021-04-06 00:00:00 +0900",
-    
-
-
-
-
-
-    "snippet": "関数がわからないーそのままの意味です。関数の引数がわからんなんとか実装はできたけど、脳筋だったわ"
   },
   
   {
