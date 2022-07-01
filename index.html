@@ -16,19 +16,52 @@
 
 <body>
   <div class="container">
-    <img id="img" src="./singo4-1 (1).jpg" crossorigin="anonymous" width="400">
-    <input type="file" name="example" accept="image/jpeg, image/png" onchange="inputImage(this);">
+
+    <canvas id="canvas" width="400"></canvas>
+
+    <input id="canvas" type="file" name="example" accept="image/jpeg, image/png" onchange="drowimg(this.files,);">
     <button id="button" class="btn btn-outline-primary">推論を実行</button>
     <div id="result"></div>
   </div>
   <script type="text/javascript">
+
+    /*
     function inputImage(obj) {
       var fileReader = new FileReader();
       fileReader.onload = (function () {
         document.getElementById('img').src = fileReader.result;
       });
+
       fileReader.readAsDataURL(obj.files[0]);
     }
+    */
+
+    let img = new Image();
+    var canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext('2d');
+
+    function drowimg(files) {
+
+
+      var reader = new FileReader();
+      reader.onload = async function (event) {
+        img.onload = function () {
+          canvas.width = img.naturalWidth;
+          canvas.height = img.naturalHeight;
+          ctx.drawImage(img, 0, 0);
+          
+
+        }
+        img.src = event.target.result;
+      }
+      reader.readAsDataURL(files[0]);
+    }
+
+          
+
+
+
+
 
     const MQTT_URL = "ws://localhost:8083/mqtt";
     const TOPIC = "test";
@@ -46,15 +79,22 @@
       });
 
 
+      
 
-      let img = document.getElementById('img');
 
       const result = await model.predict(img);
       const resultEle = document.getElementById('result');
       result.objects.forEach(element => {
 
 
-        if ((element.score * 100) > 51.0) {
+        if ((element.score * 100) > 40.0) {
+          ctx.lineWidth = 2
+          
+            ctx.strokeStyle = "rgb(0, 0, 255)";
+            ctx.font = "bold " + 30 + "px Arial, meiryo, sans-serif" ;
+            ctx.fillText(element.className, element.boundingBox.originX, element.boundingBox.originY + 5);
+            ctx.strokeRect(element.boundingBox.originX, element.boundingBox.originY,element.boundingBox.width,element.boundingBox.height)
+
           client.publish(TOPIC, element.className);
         }
 
