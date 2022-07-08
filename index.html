@@ -91,6 +91,7 @@
           ctx.lineWidth = 2
           
             ctx.strokeStyle = "rgb(176, 237, 148)";
+            ctx.fillStyle = '#6080A0';
             ctx.font = "bold " + 30 + "px Arial, meiryo, sans-serif" ;
             ctx.fillText(element.className, element.boundingBox.originX, element.boundingBox.originY + 5);
             ctx.strokeRect(element.boundingBox.originX, element.boundingBox.originY,element.boundingBox.width,element.boundingBox.height)
@@ -100,7 +101,7 @@
 
 
 
-
+        resultEle.innerHTML = "";
         resultEle.innerHTML += `${element.className}: ${element.score * 100}% </br>`
       });
       console.log(result.objects);
