@@ -84,6 +84,7 @@
 
       const result = await model.predict(img);
       const resultEle = document.getElementById('result');
+      resultEle.innerHTML = "";
       result.objects.forEach(element => {
 
 
@@ -101,7 +102,7 @@
 
 
 
-        resultEle.innerHTML = "";
+        
         resultEle.innerHTML += `${element.className}: ${element.score * 100}% </br>`
       });
       console.log(result.objects);
