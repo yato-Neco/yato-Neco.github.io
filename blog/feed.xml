@@ -1,0 +1,311 @@
+
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <id>/</id>
+  <title>yato-neco</title>
+  <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
+  <updated>2022-04-17T01:52:06+09:00</updated>
+  <author>
+    <name>yato-neco</name>
+    <uri>/</uri>
+  </author>
+  <link rel="self" type="application/atom+xml" href="/feed.xml"/>
+  <link rel="alternate" type="text/html" hreflang="ja"
+    href="/"/>
+  <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
+  <rights> © 2022 yato-neco </rights>
+  <icon>/assets/img/favicons/favicon.ico</icon>
+  <logo>/assets/img/favicons/favicon-96x96.png</logo>
+
+
+  
+  <entry>
+    <title>tensorflow hubにあるモデルでオブジェクトの深度(距離?)を計測</title>
+    <link href="/posts/obdepth-ai/" rel="alternate" type="text/html" title="tensorflow hubにあるモデルでオブジェクトの深度(距離?)を計測" />
+    <published>2022-04-16T19:37:00+09:00</published>
+  
+    <updated>2022-04-16T19:37:00+09:00</updated>
+  
+    <id>/posts/obdepth-ai/</id>
+    <content src="/posts/obdepth-ai/" />
+    <author>
+      <name>yato-neco</name>
+    </author>
+
+  
+    
+    <category term="プログラミング" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      object_detection と Image depth estimation を使用してオブジェクトの深度を計測
+
+
+注意
+python初心者なのでコードにツッコミどころがるとおみますが、
+お気になさらず。
+
+
+
+本題です。
+作った経緯としては、オブジェクト(画像の中に映ってる人)の距離を計測できるかなって感じです。
+
+今回、使用したモデルはオブジェクト検知の
+object_detection
+と
+midas/v2です
+
+  object_detectionのモデルは基本どれを使用しても問題ないはずです。
+
+
+まず、midas/v2とobject_detectionを使ってこの画像を以下のようにします。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+それぞれのモデルを使用して出された画像
+
+
+
+
+
+
+
+
+
+object_detectionのdetection_boxesを使ってmidas/v2か...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>My New Post</title>
+    <link href="/posts/my-new-post/" rel="alternate" type="text/html" title="My New Post" />
+    <published>2022-04-16T12:38:00+09:00</published>
+  
+    <updated>2022-04-16T12:38:00+09:00</updated>
+  
+    <id>/posts/my-new-post/</id>
+    <content src="/posts/my-new-post/" />
+    <author>
+      <name>yato-neco</name>
+    </author>
+
+  
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      
+
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>flutterのshowModalBottomSheetについて1</title>
+    <link href="/posts/flutter1/" rel="alternate" type="text/html" title="flutterのshowModalBottomSheetについて1" />
+    <published>2021-05-13T00:00:00+09:00</published>
+  
+    <updated>2021-05-13T00:00:00+09:00</updated>
+  
+    <id>/posts/flutter1/</id>
+    <content src="/posts/flutter1/" />
+    <author>
+      <name>yato-neco</name>
+    </author>
+
+  
+    
+    <category term="プログラミング" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      角がなんか違う
+
+丸くしたのに角が薄く出てしまう。
+
+var value = await showModalBottomSheet&amp;lt;Answers&amp;gt;(
+          isScrollControlled: true,
+          context: context,
+          backgroundColor: Colors.transparent,
+
+          builder: (BuildContext context){
+            return new Container(
+                height: 260,
+                margin: EdgeInsets.all(0.0),
+                padding: new EdgeInsets.all(0.0),
+  ...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>GUIアプリケーションが使えない</title>
+    <link href="/posts/pythonGUI/" rel="alternate" type="text/html" title="GUIアプリケーションが使えない" />
+    <published>2021-04-19T00:00:00+09:00</published>
+  
+    <updated>2021-04-19T00:00:00+09:00</updated>
+  
+    <id>/posts/pythonGUI/</id>
+    <content src="/posts/pythonGUI/" />
+    <author>
+      <name>yato-neco</name>
+    </author>
+
+  
+    
+    <category term="プログラミング" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      Err発生
+
+以下の様なエラー文がでました。
+
+main.py:27: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure. plt.show()
+
+よく分からないけど、GUI環境がないのかな？
+
+解決方法
+
+色々調べたらこうしろって書いてあった
+
+matplotlib.use('TkAgg')
+
+  を追加
+
+
+sudo apt-get install python3-tk
+
+  で起動した。
+
+
+よくわからん…
+
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>ideapad duetのターミナルが起動できなくなった</title>
+    <link href="/posts/tarminal/" rel="alternate" type="text/html" title="ideapad duetのターミナルが起動できなくなった" />
+    <published>2021-03-28T00:00:00+09:00</published>
+  
+    <updated>2021-03-28T00:00:00+09:00</updated>
+  
+    <id>/posts/tarminal/</id>
+    <content src="/posts/tarminal/" />
+    <author>
+      <name>yato-neco</name>
+    </author>
+
+  
+    
+    <category term="プログラミング" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      ターミナルがエラーを起こし起動しなくなった
+
+動作環境
+
+  OS: Chromebook
+  CPU(SoC): MediaTek Helio P60T
+  Memoy: 4gb
+
+
+状況
+
+
+  Linux開発環境のリセットを試みたが、一向に削除が進まない。
+
+
+原因
+パッケージをインストールしまくて起動しなくなってしまった。
+(多分)
+
+対処
+
+
+  
+    croshをchromeの検索バーに打つ
+  
+  
+    vmc listで起動してるコンテナを確認
+  
+  vmc stop terminaでコンテナを停止
+    
+      私の場合はこの時点で直りました。
+直らない場合は以下のことを続けてしてください。
+    
+  
+  vmc destroy terminaコンテナ削除
+    
+      注意: Linux ファイルのデータ全部消えます。
+    ...
+    </summary>
+  
+
+  </entry>
+
+</feed>
+
+

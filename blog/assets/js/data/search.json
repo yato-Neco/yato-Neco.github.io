@@ -1,0 +1,109 @@
+[
+  
+  {
+    "title": "tensorflow hubにあるモデルでオブジェクトの深度(距離?)を計測",
+    "url": "/posts/obdepth-ai/",
+    "categories": "プログラミング",
+    "tags": "AI, Python",
+    "date": "2022-04-16 19:37:00 +0900",
+    
+
+
+
+
+
+    "snippet": "object_detection と Image depth estimation を使用してオブジェクトの深度を計測注意python初心者なのでコードにツッコミどころがるとおみますが、お気になさらず。本題です。作った経緯としては、オブジェクト(画像の中に映ってる人)の距離を計測できるかなって感じです。今回、使用したモデルはオブジェクト検知のobject_detectionとmidas/v2です  object_detectionのモデルは基本どれを使用しても問題ないはずです。まず、midas/v2とobject_detectionを使ってこの画像を以下のようにします。それぞれのモデルを使用して出された画像object_detectionのdetection_boxesを使ってmidas/v2から出た画像を合わせる。detection_boxesの部分を切り出して、numpy array内を平均で出すと以下になります。{&#39;id&#39;: 17, &#39;name&#39;: &#39;cat&#39;, &#39;detection_scores&#39;: 0.9192501306533813, &#39;mean&#39;: 0.6890426442537253}だいたい0.69ぐらいです。この数値が1になるほど近くなり0になるほど遠くなります。問題点  画像によってmidas/v2の精度が良くない。  object_detectionからdetection_boxesを使ってmidas/v2から出た画像が以下のように黒い部分の割合が多い場合、平均化する時に良くない影響を出す。上部の部分が黒い。"
+  },
+  
+  {
+    "title": "My New Post",
+    "url": "/posts/my-new-post/",
+    "categories": "",
+    "tags": "",
+    "date": "2022-04-16 12:38:00 +0900",
+    
+
+
+
+
+
+    "snippet": ""
+  },
+  
+  {
+    "title": "flutterのshowModalBottomSheetについて1",
+    "url": "/posts/flutter1/",
+    "categories": "プログラミング",
+    "tags": "Dart, flutter",
+    "date": "2021-05-13 00:00:00 +0900",
+    
+
+
+
+
+
+    "snippet": "角がなんか違う丸くしたのに角が薄く出てしまう。var value = await showModalBottomSheet&amp;lt;Answers&amp;gt;(          isScrollControlled: true,          context: context,          backgroundColor: Colors.transparent,          builder: (BuildContext context){            return new Container(                height: 260,                margin: EdgeInsets.all(0.0),                padding: new EdgeInsets.all(0.0),                decoration:                    BoxDecoration(                        borderRadius: BorderRadius.only(                            topLeft: Radius.circular(20.0),                            topRight: Radius.circular(20.0)                        ),                        color: Colors.white,                    ),            );          }      );問題のコードです。backgroundColor: Colors.transparent, で、角が透明になったけど、その代わりにダークモード、ライトモード変更時、色を固定しないといけなくなった。解決したコード。var value = await showModalBottomSheet&amp;lt;Answers&amp;gt;(          isScrollControlled: true,          context: context,          shape: RoundedRectangleBorder(            borderRadius: BorderRadius.vertical(top: Radius.circular(15)),          ),          builder: (BuildContext context){            return new Container(                height: 260,                margin: EdgeInsets.all(0.0),                padding: new EdgeInsets.all(0.0),            child: new Column(            children: &amp;lt;Widget&amp;gt;[            new Text(&#39;Demo&#39;),            new Text(&#39;Friend Add&#39;),            new Text(&#39;&#39;),            new RaisedButton(onPressed: () =&amp;gt; Navigator.pop(context, Answers.OK), child: new Text(&#39;OK&#39;),),            new RaisedButton(onPressed: () =&amp;gt; Navigator.pop(context, Answers.CLOSE), child: new Text(&#39;Close&#39;),)            ]            ));          }      );"
+  },
+  
+  {
+    "title": "GUIアプリケーションが使えない",
+    "url": "/posts/pythonGUI/",
+    "categories": "プログラミング",
+    "tags": "python",
+    "date": "2021-04-19 00:00:00 +0900",
+    
+
+
+
+
+
+    "snippet": "Err発生以下の様なエラー文がでました。main.py:27: UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure. plt.show()よく分からないけど、GUI環境がないのかな？解決方法色々調べたらこうしろって書いてあったmatplotlib.use(&#39;TkAgg&#39;)  を追加sudo apt-get install python3-tk  で起動した。よくわからん…"
+  },
+  
+  {
+    "title": "ideapad duetのターミナルが起動できなくなった",
+    "url": "/posts/tarminal/",
+    "categories": "プログラミング",
+    "tags": "obs, arm64, ideapad duet",
+    "date": "2021-03-28 00:00:00 +0900",
+    
+
+
+
+
+
+    "snippet": "ターミナルがエラーを起こし起動しなくなった動作環境  OS: Chromebook  CPU(SoC): MediaTek Helio P60T  Memoy: 4gb状況  Linux開発環境のリセットを試みたが、一向に削除が進まない。原因パッケージをインストールしまくて起動しなくなってしまった。(多分)対処      croshをchromeの検索バーに打つ        vmc listで起動してるコンテナを確認    vmc stop terminaでコンテナを停止          私の場合はこの時点で直りました。直らない場合は以下のことを続けてしてください。        vmc destroy terminaコンテナ削除          注意: Linux ファイルのデータ全部消えます。        Linux開発環境をオンにする          初期化されてない場合は削除しても大丈夫です。      "
+  },
+  
+  {
+    "title": "ideapad duetにOBSをインストールしてみた",
+    "url": "/posts/obs/",
+    "categories": "プログラミング",
+    "tags": "obs, arm64, ideapad duet",
+    "date": "2021-03-28 00:00:00 +0900",
+    
+
+
+
+
+
+    "snippet": "ideapad duetにOBSをインストール動作環境  OS: Chromebook  CPU(SoC): MediaTek Helio P60T  Memoy: 4gb経緯なぜかchromebookにOBS入れたくなった。arm版が無く自分でビルドすることになってしまった。ビルド&amp;amp;インストール-1色々調べた結果、以下のサイトにたどり着いた。  Jetson Nanoでライブ配信ソフトOBS Studioを動かしてみたJetson Nanoだけどビルドすれば関係ないかと思って、長い時間かけて手順道りにしてみた結果.. OBS appears to be running inside a ChromeOS container. This platform is unsupported f***そこそこの時間かけてビルドしたのに…ついでにターミナル起動しなくなった。解決方法は以下  ideapad duetのターミナルが起動できなくなったビルド&amp;amp;インストール-2で、また色々調べた結果、こちらのサイトを見つけた。  Lenovo IdeaPad Duet Chromebook（Debian 10）にOBSをインストールしたなんだ、あるじゃんと思い、手順道りにした結果…. OBS appears to be running inside a ChromeOS container. This platform is unsupportedですよね〜 前までは起動できたらしいが、今の環境では起動できなくなった模様。"
+  },
+  
+  {
+    "title": "discord.py[voice]について",
+    "url": "/posts/discordbot/",
+    "categories": "プログラミング",
+    "tags": "python, discord.py",
+    "date": "2021-03-25 00:00:00 +0900",
+    
+
+
+
+
+
+    "snippet": "discord.py[voice]がインストールできない動作環境  OS: Chromebook  CPU(SoC): MediaTek Helio P60T  Python 3.7.3  pip 21.0.1なぜかPEP 517 エラーがでてインストールできない。pipのバージョンを下げたが意味無し。対処sudo apt install libffi-dev libnacl-dev python3-devでインストールできた。引用: Debianベースのシステムでは、次のコマンドで依存関係にあるライブラリを取得できますらしい…"
+  }
+  
+]
+
