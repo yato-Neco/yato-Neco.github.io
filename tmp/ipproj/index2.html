@@ -1,0 +1,196 @@
+<html>
+
+<body>
+  <button type="button" , id="start">録音再生</button>
+  <button type="button" , id="start2">録音</button>
+  <button id="play">再生波形生成</button>
+  <button id="play0">再生</button>
+  <a id="download"></a>
+
+</body>
+
+<script type="module">
+  import RecorderNode from "/recoder.js";
+  import PlayerNode from "/player.js";
+
+  const t = document.getElementById("start");
+  const b = document.getElementById("start2");
+  const download = document.getElementById("download");
+  const soundplay = document.getElementById("play");
+  const soundplay0 = document.getElementById("play0");
+
+  let audioContext;
+  let node;
+
+  soundplay.addEventListener("click", async function () {
+    audioContext = new AudioContext();
+    await audioContext.audioWorklet.addModule("/playing.js");
+
+    node = new AudioWorkletNode(audioContext, 'player-processor');
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: false,
+      audio: true,
+    });
+    const streamNode = audioContext.createMediaStreamSource(stream);
+    const playerNode = new PlayerNode(audioContext);
+    streamNode.connect(playerNode).connect(audioContext.destination);
+    //node.connect(audioContext.destination);
+    setTimeout(() => {
+      streamNode.disconnect();
+      playerNode.disconnect();
+    }, 5000)
+  });
+
+
+
+  soundplay0.addEventListener("click", async function () {
+    const music = new Audio('/sigtest1.wav');
+    music.play();
+
+  });
+
+
+
+
+  t.addEventListener("click", async function () {
+    //music.play();
+
+
+    const audioCtx = new AudioContext();
+    await audioCtx.audioWorklet.addModule("/recording.js");
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: false,
+      audio: true,
+    });
+    let audio_sample_rate = audioCtx.sampleRate;
+
+    const streamNode = audioCtx.createMediaStreamSource(stream);
+    const recorderNode = new RecorderNode(audioCtx);
+    streamNode.connect(recorderNode).connect(audioCtx.destination);
+
+    let encodeWAV = function (samples, sampleRate) {
+      let buffer = new ArrayBuffer(44 + samples.length * 2);
+      let view = new DataView(buffer);
+
+      let writeString = function (view, offset, string) {
+        for (let i = 0; i < string.length; i++) {
+          view.setUint8(offset + i, string.charCodeAt(i));
+        }
+      };
+
+      let floatTo16BitPCM = function (output, offset, input) {
+        for (let i = 0; i < input.length; i++, offset += 2) {
+          let s = Math.max(-1, Math.min(1, input[i]));
+          output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+        }
+      };
+
+      writeString(view, 0, "RIFF");
+      view.setUint32(4, 32 + samples.length * 2, true); // これ以降のファイルサイズ
+      writeString(view, 8, "WAVE"); // WAVEヘッダ
+      writeString(view, 12, "fmt "); // fmtチャンク
+      view.setUint32(16, 16, true); // fmtチャンクのバイト数
+      view.setUint16(20, 1, true); // フォーマットID
+      view.setUint16(22, 1, true); // チャンネル数
+      view.setUint32(24, sampleRate, true); // サンプリングレート
+      view.setUint32(28, sampleRate * 2, true); // データ速度
+      view.setUint16(32, 2, true); // ブロックサイズ
+      view.setUint16(34, 16, true); // サンプルあたりのビット数
+      writeString(view, 36, "data"); // dataチャンク
+      view.setUint32(40, samples.length * 2, true); // 波形データのバイト数
+      floatTo16BitPCM(view, 44, samples); // 波形データ
+
+      return view;
+    };
+
+    const music = new Audio('/sigtest1.wav');
+    music.play();
+
+    setTimeout(() => {
+      streamNode.disconnect();
+      recorderNode.disconnect();
+      //music.pause();
+
+      const samples = recorderNode.getData(); //録音したデータ(Float32Array)
+      let dataview = encodeWAV(samples, audio_sample_rate);
+      let audioBlob = new Blob([dataview], { type: "audio/wav" });
+      let myURL = window.URL || window.webkitURL;
+      let url = myURL.createObjectURL(audioBlob);
+      download.href = url;
+      download.download = "test.wav";
+      download.click();
+    }, 5000);
+  });
+
+
+  b.addEventListener("click", async function () {
+    //music.play();
+
+
+    const audioCtx = new AudioContext();
+    await audioCtx.audioWorklet.addModule("/recording.js");
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: false,
+      audio: true,
+    });
+    let audio_sample_rate = audioCtx.sampleRate;
+
+    const streamNode = audioCtx.createMediaStreamSource(stream);
+    const recorderNode = new RecorderNode(audioCtx);
+    streamNode.connect(recorderNode).connect(audioCtx.destination);
+
+    let encodeWAV = function (samples, sampleRate) {
+      let buffer = new ArrayBuffer(44 + samples.length * 2);
+      let view = new DataView(buffer);
+
+      let writeString = function (view, offset, string) {
+        for (let i = 0; i < string.length; i++) {
+          view.setUint8(offset + i, string.charCodeAt(i));
+        }
+      };
+
+      let floatTo16BitPCM = function (output, offset, input) {
+        for (let i = 0; i < input.length; i++, offset += 2) {
+          let s = Math.max(-1, Math.min(1, input[i]));
+          output.setInt16(offset, s < 0 ? s * 0x8000 : s * 0x7fff, true);
+        }
+      };
+
+      writeString(view, 0, "RIFF");
+      view.setUint32(4, 32 + samples.length * 2, true); // これ以降のファイルサイズ
+      writeString(view, 8, "WAVE"); // WAVEヘッダ
+      writeString(view, 12, "fmt "); // fmtチャンク
+      view.setUint32(16, 16, true); // fmtチャンクのバイト数
+      view.setUint16(20, 1, true); // フォーマットID
+      view.setUint16(22, 1, true); // チャンネル数
+      view.setUint32(24, sampleRate, true); // サンプリングレート
+      view.setUint32(28, sampleRate * 2, true); // データ速度
+      view.setUint16(32, 2, true); // ブロックサイズ
+      view.setUint16(34, 16, true); // サンプルあたりのビット数
+      writeString(view, 36, "data"); // dataチャンク
+      view.setUint32(40, samples.length * 2, true); // 波形データのバイト数
+      floatTo16BitPCM(view, 44, samples); // 波形データ
+
+      return view;
+    };
+
+
+
+    setTimeout(() => {
+      streamNode.disconnect();
+      recorderNode.disconnect();
+      //music.pause();
+
+      const samples = recorderNode.getData(); //録音したデータ(Float32Array)
+      let dataview = encodeWAV(samples, audio_sample_rate);
+      let audioBlob = new Blob([dataview], { type: "audio/wav" });
+      let myURL = window.URL || window.webkitURL;
+      let url = myURL.createObjectURL(audioBlob);
+      download.href = url;
+      download.download = "test.wav";
+      download.click();
+    }, 10000);
+  });
+</script>
+
+</html>
