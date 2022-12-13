@@ -10,8 +10,8 @@
 </body>
 
 <script type="module">
-  import RecorderNode from "/recoder.js";
-  import PlayerNode from "/player.js";
+  import RecorderNode from "./recoder.js";
+  import PlayerNode from "./player.js";
 
   const t = document.getElementById("start");
   const b = document.getElementById("start2");
@@ -24,7 +24,7 @@
 
   soundplay.addEventListener("click", async function () {
     audioContext = new AudioContext();
-    await audioContext.audioWorklet.addModule("/playing.js");
+    await audioContext.audioWorklet.addModule("./playing.js");
 
     node = new AudioWorkletNode(audioContext, 'player-processor');
     const stream = await navigator.mediaDevices.getUserMedia({
@@ -44,7 +44,7 @@
 
 
   soundplay0.addEventListener("click", async function () {
-    const music = new Audio('/sigtest1.wav');
+    const music = new Audio('./sigtest1.wav');
     music.play();
 
   });
@@ -57,7 +57,7 @@
 
 
     const audioCtx = new AudioContext();
-    await audioCtx.audioWorklet.addModule("/recording.js");
+    await audioCtx.audioWorklet.addModule("./recording.js");
     const stream = await navigator.mediaDevices.getUserMedia({
       video: false,
       audio: true,
@@ -103,7 +103,7 @@
       return view;
     };
 
-    const music = new Audio('/sigtest1.wav');
+    const music = new Audio('./sigtest1.wav');
     music.play();
 
     setTimeout(() => {
@@ -128,7 +128,7 @@
 
 
     const audioCtx = new AudioContext();
-    await audioCtx.audioWorklet.addModule("/recording.js");
+    await audioCtx.audioWorklet.addModule("./recording.js");
     const stream = await navigator.mediaDevices.getUserMedia({
       video: false,
       audio: true,
