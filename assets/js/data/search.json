@@ -1,6 +1,21 @@
 [
   
   {
+    "title": "自作自動走行ロボットのあれやこれ",
+    "url": "/posts/robot/",
+    "categories": "プログラミング",
+    "tags": "AI, Python, Rust, ロボットプログラミング, 初心者",
+    "date": "2023-01-27 12:38:00 +0900",
+    
+
+
+
+
+
+    "snippet": "自作自動走行ロボット No.1なぜブログにしたか得た知識を忘れずにアウトプットと設計思想を振り返る為にブログにしました。機能  GPSによるナビ走行  SLAM(LiDAR)  加速度センサーでのナビ走行  カメラで物体認識と歩行者信号機の色判別派生プロジェクト?  カメラで歩行者信号機の色判別https://yato-neco.github.io/tmp/tflite/index.html  LiDARをRustで使えるように作った成果物https://github.com/yato-Neco/ydlidarx2-rs  LiDARをプロットするソフトウェアhttps://github.com/yato-Neco/LPlot  ロボットをプログラミングする為のなんかhttps://github.com/yato-Neco/EvetDvn1. GPSによるナビ走行の設計思想何度か書き直しをした部分で、設計もだいぶ悩んだ部分です。waypointを設定し、そこに着いたら次のwaypointに向かって進む感じです。設計ミスポイントは緯度経度でwaypointを設定したことで、これによりGPSを受信せず加速度センサーだけで走行するモードを実装困難になりました。(方法はある)これは、ロボット起動時の緯度経度から相対的な座標を別で生成することにより実装を簡単にすることができました。2. SLAM(LiDAR)SLAMとは言い難い物です。ロボットの相対な座標をKeyに障害物をValueに入れているだけです。SLAMの定義に反しているので私自身はSLAMとは読んでません。自己位置推定の実装はしてない(個人的には実装することは微妙)です。3. 加速度センサーでのナビ走行GPSセンサの緯度経度の取得が遅い(1s) &amp;amp; 受信が安定しないことにより追加した機能です。最初は二次元配列を作成していたのですが私の浅はかな実装ではメモリをかなり食うので実装を取りやめました。以降は二次元配列を生成せず実装をしました。4. カメラで物体認識と歩行者信号機の色判別モデルはEfficientDetを使用し転移学習で歩行者信号機の色判別を実装しました。途中で別のタスクをしないといけなかったので精度の良い物は作れませんでした。デモが以下のURLから試せます。https://yato-neco.github.io/tmp/tflite/index.html5. EvetDvn(ロボットをプログラミングする為のなんか)主に自由な書き方にしないためのライブラリです。pub struct AutoEvents {    pub is_core_stop: bool,    pub is_debug: bool,    pub is_break: bool,    pub is_move: bool,    pub is_trune: bool,    pub is_first_time: bool,    pub is_continue: bool,    pub is_flash:bool,    pub azimuth: f64,    pub maneuver: &amp;amp;&#39;static str,}struct AutoModule {    pub nav: Nav,    pub scheduler: Scheduler,    pub moter_controler: Moter,}~~~~~~let mut flacn = FlaCon::new(module, event);この様に、事前に使うフラグとモジュールを事前に縛ることによって、何のモジュールやフラグが使うことが出来るかを簡単に確認できるようになっています。内容としては以上です、ご精読ありがとうございました。"
+  },
+  
+  {
     "title": "tensorflow hubにあるモデルでオブジェクトの深度(距離?)を計測",
     "url": "/posts/obdepth-ai/",
     "categories": "プログラミング",
@@ -12,22 +27,7 @@
 
 
 
-    "snippet": "object_detection と Image depth estimation を使用してオブジェクトの深度を計測注意python初心者なのでコードにツッコミどころがるとおみますが、お気になさらず。本題です。作った経緯としては、オブジェクト(画像の中に映ってる人)の距離を計測できるかなって感じです。今回、使用したモデルはオブジェクト検知のobject_detectionとmidas/v2です  object_detectionのモデルは基本どれを使用しても問題ないはずです。まず、midas/v2とobject_detectionを使ってこの画像を以下のようにします。それぞれのモデルを使用して出された画像object_detectionのdetection_boxesを使ってmidas/v2から出た画像を合わせる。detection_boxesの部分を切り出して、numpy array内を平均で出すと以下になります。{&#39;id&#39;: 17, &#39;name&#39;: &#39;cat&#39;, &#39;detection_scores&#39;: 0.9192501306533813, &#39;mean&#39;: 0.6890426442537253}だいたい0.69ぐらいです。この数値が1になるほど近くなり0になるほど遠くなります。問題点  画像によってmidas/v2の精度が良くない。  object_detectionからdetection_boxesを使ってmidas/v2から出た画像が以下のように黒い部分の割合が多い場合、平均化する時に良くない影響を出す。上部の部分が黒い。"
-  },
-  
-  {
-    "title": "My New Post",
-    "url": "/posts/my-new-post/",
-    "categories": "",
-    "tags": "",
-    "date": "2022-04-16 12:38:00 +0900",
-    
-
-
-
-
-
-    "snippet": ""
+    "snippet": "object_detection と Image depth estimation を使用してオブジェクトの深度を計測注意python初心者なのでコードにツッコミどころがるとおみますが、お気になさらず。本題です。作った経緯としては、オブジェクト(画像の中に映ってる人)の距離を計測できるかなって感じです。今回、使用したモデルはオブジェクト検知のobject_detectionとmidas/v2です  object_detectionのモデルは基本どれを使用しても問題ないはずです。まず、midas/v2とobject_detectionを使ってこの画像を以下のようにします。それぞれのモデルを使用して出された画像object_detectionのdetection_boxesを使ってmidas/v2から出た画像を合わせる。                        detection_boxesの部分を切り出して、numpy array内を平均で出すと以下になります。        {&#39;id&#39;: 17, &#39;name&#39;: &#39;cat&#39;, &#39;detection_scores&#39;: 0.9192501306533813, &#39;mean&#39;: 0.6890426442537253}            だいたい0.69ぐらいです。    この数値が1.0になるほど近くなり0.0になるほど遠くなります。        問題点  画像によってmidas/v2の精度が良くない。  object_detectionからdetection_boxesを使ってmidas/v2から出た画像が以下のように黒い部分の割合が多い場合、平均化する時に良くない影響を出す。上部の部分が黒い。"
   },
   
   {
@@ -49,7 +49,7 @@
     "title": "GUIアプリケーションが使えない",
     "url": "/posts/pythonGUI/",
     "categories": "プログラミング",
-    "tags": "python",
+    "tags": "Python",
     "date": "2021-04-19 00:00:00 +0900",
     
 
@@ -94,7 +94,7 @@
     "title": "discord.py[voice]について",
     "url": "/posts/discordbot/",
     "categories": "プログラミング",
-    "tags": "python, discord.py",
+    "tags": "discord.py, Python",
     "date": "2021-03-25 00:00:00 +0900",
     
 

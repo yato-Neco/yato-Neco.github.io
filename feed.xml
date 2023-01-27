@@ -4,7 +4,7 @@
   <id>/</id>
   <title>yato-neco</title>
   <subtitle>A minimal, responsive, and powerful Jekyll theme for presenting professional writing.</subtitle>
-  <updated>2022-04-17T01:52:06+09:00</updated>
+  <updated>2023-01-27T22:34:14+09:00</updated>
   <author>
     <name>yato-neco</name>
     <uri>/</uri>
@@ -13,10 +13,88 @@
   <link rel="alternate" type="text/html" hreflang="ja"
     href="/"/>
   <generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator>
-  <rights> © 2022 yato-neco </rights>
+  <rights> © 2023 yato-neco </rights>
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>自作自動走行ロボットのあれやこれ</title>
+    <link href="/posts/robot/" rel="alternate" type="text/html" title="自作自動走行ロボットのあれやこれ" />
+    <published>2023-01-27T12:38:00+09:00</published>
+  
+    <updated>2023-01-27T12:38:00+09:00</updated>
+  
+    <id>/posts/robot/</id>
+    <content src="/posts/robot/" />
+    <author>
+      <name>yato-neco</name>
+    </author>
+
+  
+    
+    <category term="プログラミング" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      自作自動走行ロボット No.1
+
+なぜブログにしたか
+得た知識を忘れずにアウトプットと設計思想を振り返る為にブログにしました。
+
+
+機能
+
+
+  GPSによるナビ走行
+  SLAM(LiDAR)
+  加速度センサーでのナビ走行
+  カメラで物体認識と歩行者信号機の色判別
+
+
+
+
+派生プロジェクト?
+
+
+
+
+  カメラで歩行者信号機の色判別
+https://yato-neco.github.io/tmp/tflite/index.html
+
+
+
+
+
+  LiDARをRustで使えるように作った成果物
+https://github.com/yato-Neco/ydlidarx2-rs
+
+
+
+
+
+  LiDARをプロットするソフトウェア
+https://github.com/yato-Neco/LPlot
+
+
+
+
+
+  ロボットをプログラミングする為のなんか
+https://github....
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
@@ -92,39 +170,6 @@ midas/v2です
 
 
 object_detectionのdetection_boxesを使ってmidas/v2か...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>My New Post</title>
-    <link href="/posts/my-new-post/" rel="alternate" type="text/html" title="My New Post" />
-    <published>2022-04-16T12:38:00+09:00</published>
-  
-    <updated>2022-04-16T12:38:00+09:00</updated>
-  
-    <id>/posts/my-new-post/</id>
-    <content src="/posts/my-new-post/" />
-    <author>
-      <name>yato-neco</name>
-    </author>
-
-  
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      
-
     </summary>
   
 
